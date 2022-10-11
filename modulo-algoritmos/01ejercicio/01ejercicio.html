@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../ejercicios.css">
+    <title>Ejercicio 01</title>
+</head>
+
+<body>
+    <header>
+        <h1> Ejercicio 1</h1>
+    </header>
+    <div>
+        <h5>Pide un número por teclado e indica si es un número primo o no. Un número primo es aquel que solo puede
+            dividirse entre
+            1 y sí mismo. Por ejemplo: 25 no es primo, ya que 25 es divisible entre 5, sin embargo, 17 si es primo.</h5>
+        <section>
+            <label for="numero">Ingrese un número</label>
+            <input type="number" id="inputNumber" name="numero">
+            <span class="cartel"></span>
+            <a href="/index.html">Volver al Indice de ejercicios</a>
+        </section>
+    </div>
+    <script>
+        let $inputNumber1 = document.getElementById("inputNumber")
+        let response = ""
+        const isPrime = (number) => {
+            let valueNotIsPrime = false
+            for (let i = 2; i < number; i++) {
+                if (number % i === 0) {
+                    valueNotIsPrime = true;
+                    break
+                }
+            }
+            return valueNotIsPrime
+            console.log(valueNotIsPrime)
+        }
+
+        $inputNumber1.addEventListener("input", e => {
+            console.log($inputNumber1.value)
+            if (isPrime(e.target.value)) {
+                response = "El número ingresado NO es primo"
+            } else {
+                response = "El número ingresado es primo"
+            }
+            document.querySelector(".cartel").innerHTML = response
+        })
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../ejercicios.css">
+    <title>Ejercicio 01</title>
+</head>
+
+<body>
+    <header>
+        <h1> Ejercicio 1</h1>
+    </header>
+    <div>
+        <section>
+            <h2>Abra la consola del Navegador (Presione F12 o Ctrl+Shift+I)</h2>
+            <a href="/index.html">Volver al Indice de ejercicios</a>
+        </section>
+    </div>
+    <script>
+        /*     Haz una clase llamada Password que siga las siguientes condiciones:
+            ● Que tenga los atributos longitud y contraseña.Por defecto, la longitud será de 8 caracteres. 
+            ● Los constructores serán los siguiente: 
+            ■ Un constructor por defecto. 
+            ■ Un constructor con la longitud que nosotros le pasemos(Generará una contraseña aleatoria con esa longitud). 
+            ● Los métodos que implementa serán: 
+            ○ esFuerte(): devuelve un booleano si es fuerte o no, para que sea 
+            fuerte debe tener más de 2 mayúsculas, más de 1 minúscula y más de
+                        3 números. 
+            ○ generarPassword(): genera la contraseña del objeto con la longitud 
+            que tenga. 
+            ○ Métodos get para los atributos contraseña y longitud. 
+            ○ Método set para atributo longitud. 
+            Crear un proyecto de consola que solicite al usuario una contraseña por teclado y muestre un mensaje indicando la contraseña y si es o no fuerte.  */
+        class Password {
+            constructor({ password, longitudCadena = 8 }) {
+                this.password = password;
+                this.longitudCadena = longitudCadena;
+
+                this.esFuerte(password)
+                this.generarPassword(longitudCadena);
+
+            }
+            generarPassword(longitud) {
+                let pass = '';
+                let str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
+                    'abcdefghijklmnopqrstuvwxyz0123456789@#$';
+
+                for (let i = 1; i <= longitud; i++) {
+                    var char = Math.floor(Math.random()
+                        * str.length + 1);
+
+                    pass += str.charAt(char)
+                }
+
+                return this.password = pass;
+            }
+            esFuerte(password) {
+                let condicion = false
+                const mayusc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                const minusc = "abcdefghijklmnopqrstuvwxyz"
+                const numb = "0123456789"
+                let contadorMayusc = 0,
+                    contadorMinusc = 0,
+                    contadorNumb = 0;
+
+                if (password) {
+                    for (let i = 0; i < mayusc.length; i++) {
+                        let character = mayusc[i]
+                        for (let i = 0; i < password.length; i++) {
+                            let characterP = password[i];
+                            if (character === characterP) {
+                                contadorMayusc++
+                            }
+                        }
+                    }
+                    for (let i = 0; i < minusc.length; i++) {
+                        let character = minusc[i]
+                        for (let i = 0; i < password.length; i++) {
+                            let characterP = password[i];
+                            if (character === characterP) {
+                                contadorMinusc++
+                            }
+                        }
+                    }
+                    for (let i = 0; i < numb.length; i++) {
+                        let character = numb[i]
+                        for (let i = 0; i < password.length; i++) {
+                            let characterP = password[i];
+                            if (character === characterP) {
+                                contadorNumb++
+                            }
+                        }
+                    }
+
+                }
+
+                if (contadorMayusc > 2 && contadorMinusc > 1 && contadorNumb > 3) {
+                    condicion = true
+                }
+                return condicion
+            }
+
+            get getPassword() {
+                return this.password
+            }
+            get getLongitud() {
+                return this.longitudCadena
+            }
+            set setLongitudCadena(longitud) {
+                this.longitudCadena = longitud
+            }
+        }
+        console.log(new Password(8))
+    </script>
+</body>
+
+</html>

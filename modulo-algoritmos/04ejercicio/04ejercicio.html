@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../ejercicios.css">
+    <title>Ejercicio 04</title>
+</head>
+
+<body>
+    <header>
+        <h1> Ejercicio 4</h1>
+    </header>
+    <div>
+        <h5>Generar un número aleatorio comprendido entre 0 y 1000. Pedir, a continuación, al usuario adivinar el número
+            escogido
+            por el ordenador. Para ello, debe introducir un número comprendido entre 0 y 1000. Se compara el número
+            introducido con
+            el calculado por el ordenador y se muestra en la consola "es mayor" o "es menor" en función del caso. Se
+            repite la
+            operación hasta que el usuario encuentra el número.
+        </h5>
+        <section>
+            <form id="form" action="">
+                <label for="">Presione el boton para generar un numero aleatorio entre 1 y 1000</label>
+                <button id="numberGen" style="margin-bottom: 1rem;">Generar Numero</button>
+                <label for="number">Escriba un numero entre 1 y 1000</label>
+                <input type="number" name="numberInput" id="numberInput" style="margin-bottom: 2rem;">
+                <label for="number" id="reference" class="cartel"></label>
+            </form>
+            <div>
+                <a href="/index.html">Volver al Indice de ejercicios</a>
+            </div>
+        </section>
+    </div>
+    <script>
+        let $numberGen = document.getElementById("numberGen")
+        let $form = document.getElementById("form")
+        let $resName = document.getElementById("res-name")
+        let $resDuration = document.getElementById("res-duration")
+        let $resTotal = document.getElementById("res-total")
+        let response = "No has generado un numero";
+        document.querySelector("#reference").innerHTML = response
+        let numberRandom = null;
+
+        function random() {
+            numberRandom = Math.floor((Math.random() * (1001 - 1 + 1)) + 1);
+            return numberRandom;
+        }
+
+        $numberGen.addEventListener("click", e => {
+            e.preventDefault()
+            random()
+            response = ""
+            document.querySelector("#reference").innerHTML = response
+            console.log(numberRandom)
+        })
+
+        document.addEventListener("input", e => {
+            e.preventDefault()
+            if (e.target.value > numberRandom) {
+                response = "Es mayor"
+            }
+            if (e.target.value < numberRandom) {
+                response = "Es menor"
+
+            }
+            if (e.target.value === numberRandom) {
+                response = "Has encontrado el numero"
+            }
+
+            document.querySelector("#reference").innerHTML = response
+        })
+
+    </script>
+</body>
+
+</html>

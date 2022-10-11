@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../ejercicios.css">
+    <title>Ejercicio 01</title>
+</head>
+
+<body>
+    <header>
+        <h1> Ejercicio 1</h1>
+    </header>
+    <div>
+        <h5>Implementar una función que recibe una lista de enteros L y un número entero n de forma que modifique la
+            lista mediante
+            el borrado de todos los elementos de la lista que tengan este valor</h5>
+        <section>
+            <label for="numero">Elija el número a quitar de la lista</label>
+            <input type="number" id="inputNumber" name="numero">
+            <ul id="array" class="number-column">
+            </ul>
+            <span class="cartel"></span>
+            <p> Solo funciona ejecutando la funcion desde consola, no funciona en el front</p>
+            <a href="/index.html">Volver al Indice de ejercicios</a>
+        </section>
+    </div>
+    <script>
+        let $inputNumber1 = document.getElementById("inputNumber")
+        let response = ""
+
+        const isPrime = (number) => {
+            let valueNotIsPrime = false
+            for (let i = 2; i < number; i++) {
+                if (number % i === 0) {
+                    valueNotIsPrime = true;
+                    break
+                }
+            }
+            return valueNotIsPrime
+            console.log(valueNotIsPrime)
+        }
+        let L = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+        let n = null;
+        let numberDelete = 0;
+        console.log(L)
+
+        L.forEach(el => {
+            document.getElementById("array").innerHTML += `<li>${el}</li>`
+        })
+        function borrarDeLaList(array, borrar) {
+            array.splice(array.indexOf(borrar), 1)
+            array.forEach(el => {
+                document.getElementById("array").innerHTML += `<li>${el}</li>`
+            })
+            return L = array;
+        }
+
+        /*        borrarDeLaList(L, 1)
+               borrarDeLaList(L, 3) */
+        console.log(L)
+
+
+        $inputNumber1.addEventListener("input", e => {
+            let numberDelete = e.target.value
+            console.log(numberDelete)
+            document.getElementById("array").innerHTML = ``
+            borrarDeLaList(L, numberDelete)
+            console.log(L)
+        })
+
+
+    </script>
+</body>
+
+</html>

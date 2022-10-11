@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../ejercicios.css">
+    <title>Ejercicio 03</title>
+</head>
+
+<body>
+    <header>
+        <h1> Ejercicio 3</h1>
+    </header>
+    <div>
+        <h5>Por teclado se ingresa el valor hora de un empleado. Posteriormente se ingresa el nombre del empleado, la
+            antigüedad y
+            la cantidad de horas trabajadas en el mes. Se pide calcular el importe a cobrar teniendo en cuenta que al
+            total que
+            resulta de multiplicar el valor hora por la cantidad de horas trabajadas. Además, si el empleado tiene más
+            de 10 años de
+            antigüedad hay que sumarle la cantidad de años trabajados multiplicados por $30. Imprimir en pantalla el
+            nombre, la
+            antigüedad y el total a cobrar.</h5>
+        <section>
+            <form id="form" action="">
+                <label for="valuePerHour">Valor x Hr.</label>
+                <input type="number" name="valuePerHour" id="valuePerHour">
+                <label for="name">Nombre</label>
+                <input type="text" name="name" id="name">
+                <label for="length">Antiguedad (años)</label>
+                <input type="number" name="length" id="length">
+                <label for="hs">Hs. Trabajadas</label>
+                <input type="number" name="hs" id="hs">
+                <input type="submit" value="Calcular">
+            </form>
+            <div>
+                <table style="margin-bottom: 2rem;">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Antiguedad</th>
+                            <th>Total a cobrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="res-name"></td>
+                            <td id="res-duration"></td>
+                            <td id="res-total"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="/index.html">Volver al Indice de ejercicios</a>
+            </div>
+        </section>
+    </div>
+    <script>
+        let $form = document.getElementById("form")
+        let $resName = document.getElementById("res-name")
+        let $resDuration = document.getElementById("res-duration")
+        let $resTotal = document.getElementById("res-total")
+
+        document.addEventListener("submit", e => {
+            e.preventDefault()
+            $resName.innerHTML = $form.name.value;
+            $resDuration.innerHTML = $form.length.value;
+            $resTotal.innerHTML = $form.hs.value * $form.valuePerHour.value
+            if ($form.length.value > 10) {
+                $resTotal.innerHTML = ($form.length.value * 30) + ($form.hs.value * $form.valuePerHour.value)
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>
